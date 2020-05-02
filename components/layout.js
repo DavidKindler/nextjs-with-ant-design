@@ -32,9 +32,7 @@ function DefaultLayout({ children, page }) {
           </Menu>
         </Header>
 
-        <Layout>
-          <main>{children}</main>
-        </Layout>
+        {children}
 
       </Layout>
     </>
