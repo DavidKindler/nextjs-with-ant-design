@@ -1,13 +1,17 @@
 import styles from './layout.module.css'
 import Head from 'next/head'
 import Link from 'next/link'
+import { Layout, Menu, Breadcrumb } from 'antd';
+const { SubMenu } = Menu;
+const { Header, Content, Sider } = Layout;
 
 const name = 'Your Name'
 export const siteTitle = 'Next.js Sample Website'
 
-function Layout ({ children, page }) {
+function DefaultLayout({ children, page }) {
   return (
-    <div className={styles.container}>
+    <>
+      {/* // <div className={styles.container}> */}
       <Head>
         <link rel='icon' href='/favicon.ico' />
         <meta
@@ -18,35 +22,23 @@ function Layout ({ children, page }) {
         <title>{siteTitle}</title>
         <meta name='og:title' content={siteTitle} />
       </Head>
+      <Layout>
+        <Header>
+          <div className="logo" />
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={page}>
+            <Menu.Item key="home"><Link href="/"><a>Home</a></Link></Menu.Item>
+            <Menu.Item key="about"><Link href="/about"><a>About</a></Link></Menu.Item>
+            <Menu.Item key="first"><Link href="/posts/first"><a>First</a></Link></Menu.Item>
+          </Menu>
+        </Header>
 
-      <header className={styles.header}>
-        {page ? (
-          <>
-            <h1 className={styles.heading2Xl}>{page}</h1>
-          </>
-        ) : (
-          <>
-            <Link href='/'>
-              <a>NXP LOGO HERE</a>
-            </Link>
-            <h2 className={styles.headingLg}>
-              <Link href='/'>
-                <a className={styles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
-      <main>{children}</main>
-      {!page && (
-        <div className={styles.backToHome}>
-          <Link href='/'>
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-    </div>
+        <Layout>
+          <main>{children}</main>
+        </Layout>
+
+      </Layout>
+    </>
   )
 }
 
-export default Layout
+export default DefaultLayout

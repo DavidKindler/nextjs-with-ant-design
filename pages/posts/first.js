@@ -9,9 +9,7 @@ const FirstPost = () => {
         <title>First Post</title>
       </Head>
       <h1>First post</h1>
-      <Link href='/'>
-        <a>Back</a>
-      </Link>
+
     </Layout>
   )
 }
