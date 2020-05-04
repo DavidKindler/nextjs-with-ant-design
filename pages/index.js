@@ -9,7 +9,7 @@ import {
   Layout
 } from 'antd'
 import Head from 'next/head'
-import { getConfigData } from '../lib/config'
+import { getConfigData } from '../lib/getConfigData'
 import DefaultLayout from '../components/layout'
 
 const FormItem = Form.Item
@@ -21,7 +21,7 @@ export default ({ allConfigData }) => {
       <Head>
         <title>Home Page</title>
       </Head>
-      <Layout >
+      <Layout>
         <div>JSON DATA::: {JSON.stringify(allConfigData)}</div>
         <Form layout='horizontal'>
           <FormItem
@@ -96,11 +96,11 @@ export default ({ allConfigData }) => {
           </FormItem>
         </Form>
       </Layout>
-    </DefaultLayout >
+    </DefaultLayout>
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   // Get external data from the file system, API, DB, etc.
   const allConfigData = getConfigData()
 
